@@ -11,7 +11,7 @@ CALCULATE_OVERLAP MIRAE_ASSET_LARGE_CAP
 ADD_STOCK AXIS_BLUECHIP TCS
 CALCULATE_OVERLAP MIRAE_ASSET_EMERGING_BLUECHIP
 
-To run this program add input to test_file.txt and run the command "python -m geektrust <absolute path of file>"
+To run this program add input to test_file.txt and run the command "python -m geektrust <absolute path of file "funds.json">"
 
 test_program.py is a python file for unit testing
 
