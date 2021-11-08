@@ -1,7 +1,9 @@
 import unittest
+from unittest import result
 from addstocks import *
 from fund_check import *
 from Findstocks import *
+from geektrust import CALCULATE_OVERLAP, CURRENT_PORTFOLIO, current_fund_hold
 from overlap import *
 from stock_matching import *
 
@@ -54,6 +56,23 @@ class Test_Modules(unittest.TestCase):
     def test_match_stocks(self):
         self.assertEqual(match_stocks(['a', 'b', 'c', 'd', 'a', 'd'], ['a', 'p', 'q']), ['a'])# receiving iterable as input
         self.assertEqual(match_stocks(12, 23), "Invalid Input")# receiving non iterables as input
+
+
+    def test_CURRENT_PORTFOLIO(self):
+        #adding ["ICICI_PRU_NIFTY_NEXT_50_INDEX", "PARAG_PARIKH_CONSERVATIVE_HYBRID"] to current_fund_hold with CURRENT_PORTFOLIO()
+        result = CURRENT_PORTFOLIO(["ICICI_PRU_NIFTY_NEXT_50_INDEX", "PARAG_PARIKH_CONSERVATIVE_HYBRID"])
+        # fundhold_result has the expected results
+        # current_fund_hold has same values as fundhold_result and this is what expected from CURRENT_PORTFOLIO function
+        fundhold_result = ["ICICI_PRU_NIFTY_NEXT_50_INDEX", "PARAG_PARIKH_CONSERVATIVE_HYBRID"] #expected result of CURRENT_PORTFOLIO
+        self.assertEqual(current_fund_hold, fundhold_result)
+        current_fund_hold.clear()
+
+    
+    def test_CALCULATE_OVERLAP(self):
+        current_fund_hold.append("AXIS_BLUECHIP")
+        self.assertEqual(CALCULATE_OVERLAP("MIRAE_ASSET_EMERGING_BLUECHIP"), 1) #"MIRAE_ASSET_EMERGING_BLUECHIP" exist in funds.json file
+        self.assertEqual(CALCULATE_OVERLAP("BLUECHIP"), 0)# "BLUECHIP" dosen't exist in funds.json file
+        current_fund_hold.clear() 
 
    
 

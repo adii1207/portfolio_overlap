@@ -32,10 +32,11 @@ def CALCULATE_OVERLAP(fund_name):
                 print(current_funds, end=" ")
                 print(overlap_percent, end = "")
                 print("%")
-        
+        return 1
     
     else:
         print("FUND_NOT_FOUND")
+        return 0
 
        
 
@@ -83,5 +84,5 @@ if __name__ == "__main__":
         #Accessing each line of input_file stored in "lines" variable through for loop
         for line in lines:
             function_call(line.split())
-        current_fund_hold.clear()
+        current_fund_hold.clear() #removes all the data from list current_fund_hold
         
